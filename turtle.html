@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head><title>turtle test</title></head>
+<body style="width:100%;margin:0;padding:0">
+<canvas id="canvas" style="padding:0;margin: auto">
+</canvas>
+<script src="fast.js"></script>
+<script src="trivial.js"></script>
+<script>
+  function loop() {
+    var moves = [];
+    for (var i = 0; i < 20; i += 1) {
+      moves.push(Math.floor(Math.random() * 250) + 1);
+    }
+
+    count += 1;
+    var fast = solution1(moves);
+    var trivial = solution2(moves);
+    document.getElementById('canvas').getContext('2d')
+            .strokeText('Tests: ' + count, 50, 50);
+    if (fast[0] !== trivial[0]) {
+      clearInterval(loopHandle);
+    }
+  }
+
+  var count = 0;
+  var loopHandle = setInterval(loop, 50);
+</script>
+</body>
